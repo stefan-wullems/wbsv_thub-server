@@ -23,28 +23,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 exports.__esModule = true;
 var typeorm_1 = require("typeorm");
-var Pin_1 = require("./Pin");
-var User = /** @class */ (function (_super) {
-    __extends(User, _super);
-    function User() {
+var User_1 = require("./User");
+var Location_1 = require("./Location");
+var Pin = /** @class */ (function (_super) {
+    __extends(Pin, _super);
+    function Pin() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
-        __metadata("design:type", Number)
-    ], User.prototype, "id");
-    __decorate([
-        typeorm_1.Column(),
         __metadata("design:type", String)
-    ], User.prototype, "name");
+    ], Pin.prototype, "id");
     __decorate([
-        typeorm_1.OneToMany(function () { return Pin_1["default"]; }, function (pin) { return pin.user; }),
-        __metadata("design:type", Pin_1["default"])
-    ], User.prototype, "postedPins");
-    User = __decorate([
+        typeorm_1.OneToOne(function () { return Location_1["default"]; }),
+        typeorm_1.JoinColumn(),
+        __metadata("design:type", Location_1["default"])
+    ], Pin.prototype, "location");
+    __decorate([
+        typeorm_1.Column("boolean", { "default": false }),
+        __metadata("design:type", Boolean)
+    ], Pin.prototype, "approved");
+    __decorate([
+        typeorm_1.ManyToOne(function () { return User_1["default"]; }, function (user) { return user.postedPins; }),
+        __metadata("design:type", User_1["default"])
+    ], Pin.prototype, "user");
+    Pin = __decorate([
         typeorm_1.Entity()
-    ], User);
-    return User;
+    ], Pin);
+    return Pin;
 }(typeorm_1.BaseEntity));
-exports["default"] = User;
-//# sourceMappingURL=User.js.map
+exports["default"] = Pin;
+//# sourceMappingURL=Pin.js.map

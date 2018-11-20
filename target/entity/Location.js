@@ -23,28 +23,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 exports.__esModule = true;
 var typeorm_1 = require("typeorm");
-var Pin_1 = require("./Pin");
-var User = /** @class */ (function (_super) {
-    __extends(User, _super);
-    function User() {
+var Location = /** @class */ (function (_super) {
+    __extends(Location, _super);
+    function Location() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
-        __metadata("design:type", Number)
-    ], User.prototype, "id");
-    __decorate([
-        typeorm_1.Column(),
         __metadata("design:type", String)
-    ], User.prototype, "name");
+    ], Location.prototype, "id");
     __decorate([
-        typeorm_1.OneToMany(function () { return Pin_1["default"]; }, function (pin) { return pin.user; }),
-        __metadata("design:type", Pin_1["default"])
-    ], User.prototype, "postedPins");
-    User = __decorate([
+        typeorm_1.Column("float"),
+        __metadata("design:type", Number)
+    ], Location.prototype, "latitude");
+    __decorate([
+        typeorm_1.Column("float"),
+        __metadata("design:type", Number)
+    ], Location.prototype, "longitude");
+    __decorate([
+        typeorm_1.Column("text", { nullable: true }),
+        __metadata("design:type", String)
+    ], Location.prototype, "address");
+    __decorate([
+        typeorm_1.Column("text", { nullable: true }),
+        __metadata("design:type", String)
+    ], Location.prototype, "postalCode");
+    Location = __decorate([
         typeorm_1.Entity()
-    ], User);
-    return User;
+    ], Location);
+    return Location;
 }(typeorm_1.BaseEntity));
-exports["default"] = User;
-//# sourceMappingURL=User.js.map
+exports["default"] = Location;
+//# sourceMappingURL=Location.js.map

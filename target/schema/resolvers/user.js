@@ -36,6 +36,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 exports.__esModule = true;
 var User_1 = require("../../entity/User");
+var Location_1 = require("../../entity/Location");
+var Pin_1 = require("../../entity/Pin");
 exports.userQueries = {
     user: function (_, _a) {
         var id = _a.id;
@@ -52,9 +54,7 @@ exports.userMutations = {
             var user;
             return __generator(this, function (_b) {
                 switch (_b.label) {
-                    case 0:
-                        console.log(input);
-                        return [4 /*yield*/, User_1["default"].create(input).save()];
+                    case 0: return [4 /*yield*/, User_1["default"].create(input).save()];
                     case 1:
                         user = _b.sent();
                         if (!user)
@@ -63,6 +63,50 @@ exports.userMutations = {
                 }
             });
         });
+    }
+};
+exports.userRelations = {
+    User: {
+        createPin: function (_a, _b) {
+            var id = _a.id;
+            var input = _b.input;
+            return __awaiter(this, void 0, void 0, function () {
+                var locationInput, user, location, pin;
+                return __generator(this, function (_c) {
+                    switch (_c.label) {
+                        case 0:
+                            console.log(id, input);
+                            locationInput = input.locationInput;
+                            return [4 /*yield*/, User_1["default"].findOne(id)];
+                        case 1:
+                            user = _c.sent();
+                            return [4 /*yield*/, Location_1["default"].create(locationInput).save()];
+                        case 2:
+                            location = _c.sent();
+                            console.log(location);
+                            return [4 /*yield*/, Pin_1["default"].create({ user: user, location: location }).save()];
+                        case 3:
+                            pin = _c.sent();
+                            console.log(pin);
+                            return [2 /*return*/, pin];
+                    }
+                });
+            });
+        },
+        pins: function (_a) {
+            var id = _a.id;
+            return __awaiter(this, void 0, void 0, function () {
+                var user;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0: return [4 /*yield*/, User_1["default"].findOne(id)];
+                        case 1:
+                            user = _b.sent();
+                            return [2 /*return*/, Pin_1["default"].find({ where: { user: user } })];
+                    }
+                });
+            });
+        }
     }
 };
 //# sourceMappingURL=user.js.map

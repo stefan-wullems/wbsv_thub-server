@@ -35,32 +35,29 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var User_1 = require("../entity/User");
-exports.userQueries = {
-    user: function (_, _a) {
+var Pin_1 = require("../../entity/Pin");
+exports.pinQueries = {
+    pin: function (_, _a) {
         var id = _a.id;
-        return User_1["default"].findOne(id);
-    },
-    users: function () {
-        return User_1["default"].find();
+        return Pin_1["default"].findOne(id);
     }
 };
-exports.userMutations = {
-    signup: function (_, _a) {
-        var name = _a.name;
-        return __awaiter(this, void 0, void 0, function () {
-            var user;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0: return [4 /*yield*/, User_1["default"].create(name).save()];
-                    case 1:
-                        user = _b.sent();
-                        if (!user)
-                            throw new Error("something went wrong with signing up");
-                        return [2 /*return*/, user];
-                }
+exports.pinRelations = {
+    Pin: {
+        location: function (_a) {
+            var id = _a.id;
+            return __awaiter(this, void 0, void 0, function () {
+                var pin;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0: return [4 /*yield*/, Pin_1["default"].findOne({ where: { id: id }, relations: ["location"] })];
+                        case 1:
+                            pin = _b.sent();
+                            return [2 /*return*/, pin.location];
+                    }
+                });
             });
-        });
+        }
     }
 };
-//# sourceMappingURL=user.js.map
+//# sourceMappingURL=pin.js.map
