@@ -12,8 +12,6 @@ var __assign = (this && this.__assign) || function () {
 };
 exports.__esModule = true;
 var user_1 = require("./user");
-exports["default"] = {
-    Query: __assign({}, user_1.userQueries),
-    Mutation: __assign({}, user_1.userMutations)
-};
+var pin_1 = require("./pin");
+exports["default"] = __assign({ Query: __assign({}, user_1.userQueries, pin_1.pinQueries), Mutation: __assign({}, user_1.userMutations) }, user_1.userRelations, pin_1.pinRelations);
 //# sourceMappingURL=index.js.map

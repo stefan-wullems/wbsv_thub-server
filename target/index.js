@@ -9,7 +9,7 @@ var schema_1 = require("./schema");
 var typeorm_1 = require("typeorm");
 var app = new koa();
 var router = new koaRouter();
-var PORT = process.env.PORT || 4001;
+var PORT = process.env.PORT || 4004;
 // Setup the graphql server routes with the Schema
 router.post("/graphql", koaBody(), apollo_server_koa_1.graphqlKoa({ schema: schema_1["default"] }));
 router.get("/graphql", apollo_server_koa_1.graphqlKoa({ schema: schema_1["default"] }));

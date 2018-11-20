@@ -1,4 +1,11 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column } from "typeorm";
+import {
+  Entity,
+  BaseEntity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany
+} from "typeorm";
+import Pin from "./Pin";
 
 @Entity()
 export default class User extends BaseEntity {
@@ -7,4 +14,7 @@ export default class User extends BaseEntity {
 
   @Column()
   name: string;
+
+  @OneToMany(() => Pin, pin => pin.user)
+  postedPins: Pin;
 }

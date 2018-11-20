@@ -5,6 +5,6 @@ var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cook
 };
 exports.__esModule = true;
 var apollo_server_1 = require("apollo-server");
-exports["default"] = apollo_server_1.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  type Query {\n    user(id: Int!): User\n    users: [User]\n  }\n\n  type Mutation {\n    signup(input: UserInput!): User!\n  }\n\n  type User {\n    id: Int!\n    name: String!\n  }\n\n  input UserInput {\n    name: String!\n  }\n"], ["\n  type Query {\n    user(id: Int!): User\n    users: [User]\n  }\n\n  type Mutation {\n    signup(input: UserInput!): User!\n  }\n\n  type User {\n    id: Int!\n    name: String!\n  }\n\n  input UserInput {\n    name: String!\n  }\n"])));
+exports["default"] = apollo_server_1.gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  type User {\n    id: Int!\n    name: String!\n    createPin(input: PinInput): Pin!\n    pins: [Pin]\n  }\n\n  input UserInput {\n    name: String!\n  }\n"], ["\n  type User {\n    id: Int!\n    name: String!\n    createPin(input: PinInput): Pin!\n    pins: [Pin]\n  }\n\n  input UserInput {\n    name: String!\n  }\n"])));
 var templateObject_1;
 //# sourceMappingURL=user.js.map

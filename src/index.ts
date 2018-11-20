@@ -8,7 +8,7 @@ import { createConnection } from "typeorm";
 
 const app = new koa();
 const router = new koaRouter();
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT || 4004;
 
 // Setup the graphql server routes with the Schema
 router.post("/graphql", koaBody(), graphqlKoa({ schema }));
