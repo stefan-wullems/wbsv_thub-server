@@ -12,7 +12,16 @@ export default class Location extends BaseEntity {
   longitude: number;
 
   @Column("text", { nullable: true })
-  address: string;
+  streetName: string;
+
+  @Column("text", { nullable: true })
+  city: string;
+
+  @Column("text", { nullable: true })
+  country: string;
+
+  @Column("text", { nullable: true })
+  houseNumber: string;
 
   @Column("text", { nullable: true })
   postalCode: string;

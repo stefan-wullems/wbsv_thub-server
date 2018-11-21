@@ -71,11 +71,10 @@ exports.userRelations = {
             var id = _a.id;
             var input = _b.input;
             return __awaiter(this, void 0, void 0, function () {
-                var locationInput, user, location, pin;
+                var locationInput, user, location;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
-                            console.log(id, input);
                             locationInput = input.locationInput;
                             return [4 /*yield*/, User_1["default"].findOne(id)];
                         case 1:
@@ -83,12 +82,7 @@ exports.userRelations = {
                             return [4 /*yield*/, Location_1["default"].create(locationInput).save()];
                         case 2:
                             location = _c.sent();
-                            console.log(location);
-                            return [4 /*yield*/, Pin_1["default"].create({ user: user, location: location }).save()];
-                        case 3:
-                            pin = _c.sent();
-                            console.log(pin);
-                            return [2 /*return*/, pin];
+                            return [2 /*return*/, Pin_1["default"].create({ user: user, location: location }).save()];
                     }
                 });
             });

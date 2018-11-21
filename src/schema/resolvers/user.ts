@@ -23,14 +23,10 @@ export const userMutations = {
 export const userRelations = {
   User: {
     createPin: async function({ id }, { input }) {
-      console.log(id, input);
       const { locationInput } = input;
       const user = await User.findOne(id);
       const location = await Location.create(locationInput).save();
-      console.log(location);
-      const pin = await Pin.create({ user, location }).save();
-      console.log(pin);
-      return pin;
+      return Pin.create({ user, location }).save();
     },
     async pins({ id }) {
       const user = await User.findOne(id);
