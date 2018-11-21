@@ -3,16 +3,20 @@ import { gql } from "apollo-server";
 export default gql`
   type Location {
     id: Int
-    latitude: Float
-    longitude: Float
     address: String
     postalCode: String
+    city: String
+    country: String
+    latitude: Float
+    longitude: Float
   }
 
   input LocationInput {
-    latitude: Float
-    longitude: Float
     address: String
     postalCode: String
+    city: String
+    country: String
+    latitude: String
+    longitude: String
   }
 `;

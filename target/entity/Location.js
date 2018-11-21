@@ -43,7 +43,19 @@ var Location = /** @class */ (function (_super) {
     __decorate([
         typeorm_1.Column("text", { nullable: true }),
         __metadata("design:type", String)
-    ], Location.prototype, "address");
+    ], Location.prototype, "streetName");
+    __decorate([
+        typeorm_1.Column("text", { nullable: true }),
+        __metadata("design:type", String)
+    ], Location.prototype, "city");
+    __decorate([
+        typeorm_1.Column("text", { nullable: true }),
+        __metadata("design:type", String)
+    ], Location.prototype, "country");
+    __decorate([
+        typeorm_1.Column("text", { nullable: true }),
+        __metadata("design:type", String)
+    ], Location.prototype, "houseNumber");
     __decorate([
         typeorm_1.Column("text", { nullable: true }),
         __metadata("design:type", String)
