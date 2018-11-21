@@ -16,7 +16,7 @@ export default gql`
     postalCode: String
     city: String
     country: String
-    latitude: String
-    longitude: String
+    latitude: Float
+    longitude: Float
   }
 `;

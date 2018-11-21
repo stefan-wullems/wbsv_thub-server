@@ -12,6 +12,10 @@ export const pinRelations = {
     location: async function({ id }) {
       const pin = await Pin.findOne({ where: { id }, relations: ["location"] });
       return pin.location;
+    },
+    user: async function({ id }) {
+      const pin = await Pin.findOne({ where: { id }, relations: ["user"] });
+      return pin.user;
     }
   }
 };
