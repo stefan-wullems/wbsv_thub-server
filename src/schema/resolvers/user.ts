@@ -13,10 +13,8 @@ export const userQueries = {
 };
 
 export const userMutations = {
-  signup: async function(_, { input }) {
-    const user = await User.create(input).save();
-    if (!user) throw new Error("something went wrong with signing up");
-    return user;
+  signup: function(_, { input }) {
+    return User.create(input).save();
   }
 };
 
@@ -30,7 +28,8 @@ export const userRelations = {
     },
     async pins({ id }) {
       const user = await User.findOne(id);
-      return Pin.find({ where: { user } });
+      const pin = await Pin.find({ where: { user } });
+      return pin;
     }
   }
 };

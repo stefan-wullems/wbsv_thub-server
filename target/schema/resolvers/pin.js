@@ -57,6 +57,20 @@ exports.pinRelations = {
                     }
                 });
             });
+        },
+        user: function (_a) {
+            var id = _a.id;
+            return __awaiter(this, void 0, void 0, function () {
+                var pin;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0: return [4 /*yield*/, Pin_1["default"].findOne({ where: { id: id }, relations: ["user"] })];
+                        case 1:
+                            pin = _b.sent();
+                            return [2 /*return*/, pin.user];
+                    }
+                });
+            });
         }
     }
 };

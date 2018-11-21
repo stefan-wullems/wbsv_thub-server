@@ -50,19 +50,7 @@ exports.userQueries = {
 exports.userMutations = {
     signup: function (_, _a) {
         var input = _a.input;
-        return __awaiter(this, void 0, void 0, function () {
-            var user;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0: return [4 /*yield*/, User_1["default"].create(input).save()];
-                    case 1:
-                        user = _b.sent();
-                        if (!user)
-                            throw new Error("something went wrong with signing up");
-                        return [2 /*return*/, user];
-                }
-            });
-        });
+        return User_1["default"].create(input).save();
     }
 };
 exports.userRelations = {
@@ -90,13 +78,16 @@ exports.userRelations = {
         pins: function (_a) {
             var id = _a.id;
             return __awaiter(this, void 0, void 0, function () {
-                var user;
+                var user, pin;
                 return __generator(this, function (_b) {
                     switch (_b.label) {
                         case 0: return [4 /*yield*/, User_1["default"].findOne(id)];
                         case 1:
                             user = _b.sent();
-                            return [2 /*return*/, Pin_1["default"].find({ where: { user: user } })];
+                            return [4 /*yield*/, Pin_1["default"].find({ where: { user: user } })];
+                        case 2:
+                            pin = _b.sent();
+                            return [2 /*return*/, pin];
                     }
                 });
             });
